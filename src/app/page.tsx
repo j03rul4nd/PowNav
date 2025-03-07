@@ -9,6 +9,8 @@ import CommunitySection  from "@/components/landingPage/CommunitySection";
 import FeaturesSection from "@/components/landingPage/FeaturesSection";
 import PricingSection from "@/components/landingPage/PricingSection";
 import HeroSection from "@/components/landingPage/HeroSection";
+import Header  from "@/components/landingPage/Header";
+import CTASection  from "@/components/landingPage/CTASection";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -56,33 +58,7 @@ export default function Home() {
       {/* Content Container */}
       <div className="relative z-10 container mx-auto px-4 py-8">
         {/* Header */}
-        <header className="flex justify-between items-center mb-16">
-          <div className="flex items-center">
-            <div className="mr-2 w-8 h-8 bg-white rounded flex items-center justify-center">
-              <div className="w-4 h-4 bg-blue-500 rounded-sm"></div>
-            </div>
-            <h1 className="text-white text-3xl font-bold">PowNav</h1>
-          </div>
-          
-          <nav className="hidden md:flex space-x-8 text-white">
-            <a href="#features" className="hover:text-blue-300 transition-colors">Características</a>
-            <a href="#community" className="hover:text-blue-300 transition-colors">Comunidad</a>
-            <a href="#pricing" className="hover:text-blue-300 transition-colors">Planes</a>
-          </nav>
-          
-          <div className="flex space-x-4">
-            <Link href="/auth/login" className="px-4 py-2 text-white hover:text-blue-200 transition-colors">
-              Iniciar sesión
-            </Link>
-            <Link 
-              href="/auth/register" 
-              className="px-4 py-2 bg-black text-white rounded transition-colors hover:bg-gray-800"
-            >
-              Registrarse
-            </Link>
-
-          </div>
-        </header>
+        <Header />
 
         {/* Hero Section */}
         <HeroSection />
@@ -98,18 +74,8 @@ export default function Home() {
         
 
         {/* CTA Section */}
-        <section className="mb-16">
-          <div className="bg-gradient-to-r from-blue-600/20 to-indigo-700/20 rounded-2xl p-8 text-center backdrop-blur-sm border border-white/10">
-            <h3 className="text-2xl font-bold text-white mb-4">¿Listo para encontrar tu mejor línea?</h3>
-            <p className="text-white/80 max-w-xl mx-auto mb-8">
-              Únete a miles de freeriders que ya navegan el backcountry con PowNav. Empieza gratis hoy mismo.
-            </p>
-            <Link href="/auth/register" className="inline-flex items-center px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-md">
-              Crear cuenta gratis
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-          </div>
-        </section>
+        <CTASection />
+        
 
         {/* Footer */}
         <footer className="border-t border-white/10 pt-8">
