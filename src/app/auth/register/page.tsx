@@ -117,7 +117,7 @@ export default function Register() {
     };
   }, []);
 
-  const handleRegister = async (e) => {
+  const handleRegister = async (e: any) => {
     e.preventDefault();
     setError("");
     

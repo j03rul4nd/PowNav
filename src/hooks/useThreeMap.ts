@@ -55,7 +55,12 @@ export default function useThreeMap() {
       const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
       const marker = new THREE.Mesh(markerGeometry, markerMaterial);
       marker.position.set(x, 1, z);
-      sceneRef.current.add(marker);
+      if(sceneRef){
+        if(sceneRef.current){
+          sceneRef.current.add(marker);
+        }
+      }
+
       markersRef.current.push(marker);
     });
 

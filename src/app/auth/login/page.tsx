@@ -122,7 +122,7 @@ export default function Auth() {
     };
   }, [router]);
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: any) => {
     e.preventDefault();
     setError("");
     setLoading(true);
