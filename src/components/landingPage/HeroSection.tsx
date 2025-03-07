@@ -5,10 +5,14 @@ import { ArrowRight, Mountain, Compass, Snowflake, Users } from "lucide-react";
 import { useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
-// Cargar Three.js de forma dinámica (para evitar errores en SSR)
+// Cargar Three.js dinámicamente (para evitar errores en SSR)
 const DynamicMountain3D = dynamic(() => import("@/components/landingPage/Mountain3D"), {
     ssr: false,
-    loading: () => <p className="text-white">Cargando 3D...</p>,
+    loading: () => (
+        <div className="h-[300px] md:h-[400px] lg:h-[500px] flex items-center justify-center">
+            <p className="text-white">Cargando 3D...</p>
+        </div>
+    ),
 });
 
 export default function HeroSection() {
@@ -61,61 +65,65 @@ export default function HeroSection() {
           </div>
 
           {/* Right visual area */}
-          <div className="md:w-1/2">
-            <div className="relative w-full max-w-lg mx-auto aspect-square">
-              {/* Main visualization container */}
-              <div className="absolute inset-0 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-800/30 to-indigo-900/30 backdrop-blur-md border border-white/20 shadow-xl shadow-blue-900/20">
+            <div className="hidden md:block md:w-1/2">
+            <div className="relative w-full max-w-lg mx-auto min-h-[300px] md:min-h-[400px] lg:min-h-[500px]">
+                {/* Main visualization container */}
+                <div className="absolute inset-0 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-800/30 to-indigo-900/30 backdrop-blur-md border border-white/20 shadow-xl shadow-blue-900/20">
                 {/* Mostrar Three.js si carga bien, sino mostrar el icono */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {threeJsFailed ? (
-                    <div className="text-white/80 text-center p-4">
-                      <Mountain className="mx-auto w-20 h-20 mb-4 text-blue-200/90" />
-                      <p className="text-sm font-medium">Visualización no disponible</p>
+                    <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+                    {threeJsFailed ? (
+                        <div className="text-white/80 text-center p-4">
+                        <Mountain className="mx-auto w-20 h-20 mb-4 text-blue-200/90" />
+                        <p className="text-sm font-medium">Visualización no disponible</p>
+                        </div>
+                    ) : (
+                        <div className="w-full h-full">
+                        <DynamicMountain3D />
+                        </div>
+                    )}
                     </div>
-                  ) : (
-                    <DynamicMountain3D  />
-                  )}
-                   {/* Route indicators - would be part of the 3D visualization */}
-                   <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-blue-400 rounded-full"></div>
-                    <div className="absolute top-1/3 left-1/2 w-2 h-2 bg-green-400 rounded-full"></div>
-                    <div className="absolute top-2/3 right-1/3 w-2 h-2 bg-red-400 rounded-full"></div>
-                  
-                  
                 </div>
-              </div>
-             {/* Floating feature cards */}
-             <div className="absolute -bottom-6 -right-6 w-40 h-24 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 p-3 shadow-lg">
+
+                {/* Route indicators - parte de la visualización */}
+                <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-blue-400 rounded-full"></div>
+                <div className="absolute top-1/3 left-1/2 w-2 h-2 bg-green-400 rounded-full"></div>
+                <div className="absolute top-2/3 right-1/3 w-2 h-2 bg-red-400 rounded-full"></div>
+                </div>
+
+                {/* Floating feature cards */}
+                <div className="absolute -bottom-6 -right-6 w-40 h-24 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 p-3 shadow-lg">
                 <div className="flex items-start gap-2">
-                  <Compass className="w-5 h-5 text-blue-300 mt-1" />
-                  <div>
+                    <Compass className="w-5 h-5 text-blue-300 mt-1" />
+                    <div>
                     <h4 className="text-white text-sm font-medium">Rutas GPS</h4>
                     <p className="text-white/70 text-xs">Navegación precisa en montaña</p>
-                  </div>
+                    </div>
                 </div>
-              </div>
-              
-              <div className="absolute -top-6 -right-6 w-40 h-24 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 p-3 shadow-lg">
+                </div>
+                
+                <div className="absolute -top-6 -right-6 w-40 h-24 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 p-3 shadow-lg">
                 <div className="flex items-start gap-2">
-                  <Snowflake className="w-5 h-5 text-blue-300 mt-1" />
-                  <div>
+                    <Snowflake className="w-5 h-5 text-blue-300 mt-1" />
+                    <div>
                     <h4 className="text-white text-sm font-medium">Datos de nieve</h4>
                     <p className="text-white/70 text-xs">Condiciones en tiempo real</p>
-                  </div>
+                    </div>
                 </div>
-              </div>
-              
-              <div className="absolute -top-6 -left-6 w-40 h-24 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 p-3 shadow-lg">
+                </div>
+                
+                <div className="absolute -top-6 -left-6 w-40 h-24 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 p-3 shadow-lg">
                 <div className="flex items-start gap-2">
-                  <Users className="w-5 h-5 text-blue-300 mt-1" />
-                  <div>
+                    <Users className="w-5 h-5 text-blue-300 mt-1" />
+                    <div>
                     <h4 className="text-white text-sm font-medium">Comunidad</h4>
                     <p className="text-white/70 text-xs">Consejos de expertos locales</p>
-                  </div>
+                    </div>
                 </div>
-              </div>
+                </div>
+            </div>
             </div>
 
-          </div>
           
         </div>
       </div>
