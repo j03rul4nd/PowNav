@@ -19,7 +19,7 @@ const CTASection = () => {
   }, [count]);
 
   // Gestionar movimiento de parallax
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: any) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setMousePosition({
       x: e.clientX - rect.left,
