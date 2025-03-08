@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link"; // Importamos Link de Next.js
 import { supabase } from "@/lib/supabase";
 import { useAuthStore } from "@/store/authStore";
 import * as THREE from 'three';
@@ -145,14 +146,22 @@ export default function Auth() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4" ref={containerRef}>
+      {/* Botón para volver a home en la esquina superior izquierda */}
+      <Link href="/" className="absolute top-6 left-6 flex items-center px-4 py-2 bg-gray-900/70 hover:bg-gray-800 text-white rounded-md transition-all duration-300 backdrop-blur-sm border border-gray-700/30">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Volver a inicio
+      </Link>
+
       <div className="w-full max-w-md bg-black rounded-lg shadow-2xl overflow-hidden flex flex-col items-center py-12 px-8">
         {/* Logo o icono similar al de Replicate */}
         <div className="mb-6">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="4" y="4" width="12" height="12" stroke="white" strokeWidth="2" />
-            <rect x="12" y="12" width="12" height="12" stroke="white" strokeWidth="2" />
-            <rect x="20" y="20" width="12" height="12" stroke="white" strokeWidth="2" />
-          </svg>
+            <img
+              src="/vercel.svg"
+              alt="PowNav Logo"
+              className="mr-2 w-24 h-24 rounded-lg shadow-md transition-transform duration-300 group-hover:scale-110"
+            />
         </div>
         
         <h1 className="text-3xl font-medium text-white mb-8">Bienvenido</h1>
