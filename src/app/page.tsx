@@ -11,6 +11,7 @@ import PricingSection from "@/components/landingPage/PricingSection";
 import HeroSection from "@/components/landingPage/HeroSection";
 import Header  from "@/components/landingPage/Header";
 import CTASection  from "@/components/landingPage/CTASection";
+import Footer from "@/components/landingPage/Footer";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -77,51 +78,10 @@ export default function Home() {
         <CTASection />
         
 
-        {/* Footer */}
-        <footer className="border-t border-white/10 pt-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-            <div>
-              <h5 className="text-white font-semibold mb-4">PowNav</h5>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-white/70 hover:text-white transition-colors text-sm">Sobre nosotros</a></li>
-                <li><a href="#" className="text-white/70 hover:text-white transition-colors text-sm">Blog</a></li>
-                <li><a href="#" className="text-white/70 hover:text-white transition-colors text-sm">Prensa</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h5 className="text-white font-semibold mb-4">Características</h5>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-white/70 hover:text-white transition-colors text-sm">Mapas 3D</a></li>
-                <li><a href="#" className="text-white/70 hover:text-white transition-colors text-sm">Alertas</a></li>
-                <li><a href="#" className="text-white/70 hover:text-white transition-colors text-sm">Comunidad</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h5 className="text-white font-semibold mb-4">Recursos</h5>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-white/70 hover:text-white transition-colors text-sm">Guía de seguridad</a></li>
-                <li><a href="#" className="text-white/70 hover:text-white transition-colors text-sm">FAQ</a></li>
-                <li><a href="#" className="text-white/70 hover:text-white transition-colors text-sm">Contacto</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h5 className="text-white font-semibold mb-4">Legal</h5>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-white/70 hover:text-white transition-colors text-sm">Términos</a></li>
-                <li><a href="#" className="text-white/70 hover:text-white transition-colors text-sm">Privacidad</a></li>
-                <li><a href="#" className="text-white/70 hover:text-white transition-colors text-sm">Cookies</a></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="text-center text-white/50 text-sm py-6 border-t border-white/10">
-            &copy; {new Date().getFullYear()} PowNav. La brújula digital para los exploradores de la nieve.
-          </div>
-        </footer>
+        
       </div>
+        {/* Footer */}
+        <Footer />
     </div>
   );
 }
