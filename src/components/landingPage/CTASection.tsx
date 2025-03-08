@@ -40,7 +40,7 @@ const CTASection = () => {
         
         {/* Efecto de partículas/copos de nieve */}
         <div className="absolute inset-0 opacity-20">
-          {Array(12).fill().map((_, i) => (
+          {Array(12).fill(0).map((_, i) => (
             <Snowflake 
               key={i}
               className="absolute text-white"
