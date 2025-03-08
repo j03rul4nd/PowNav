@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/authStore";
+import { Search } from "lucide-react";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,44 +16,44 @@ export default function Header() {
   };
 
   return (
-    <header>
-      <div className="logo">
-        <img src="./vercel.svg" alt="PowNav Logo" />
-        <h1>PowNav</h1>
+    <header className="bg-white px-6 py-4 flex justify-between items-center shadow-md border-b border-gray-200">
+      <div className="flex items-center">
+        <img src="./vercel.svg" alt="PowNav Logo" className="h-9 mr-3 drop-shadow-md" />
+        <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-blue-400 bg-clip-text text-transparent tracking-tight">
+          PowNav
+        </h1>
       </div>
-      <div className="user-controls">
-        <div className="search-bar">
-          <i className="fa-solid fa-search"></i>
-          <input type="text" placeholder="Buscar rutas, montañas, amigos..." />
+
+      <div className="flex items-center gap-6">
+        <div className="flex items-center bg-gray-100 px-4 py-2 rounded-full w-80 border border-gray-300 focus-within:ring-2 focus-within:ring-blue-300">
+          <Search className="text-blue-500 opacity-70 mr-3" size={18} />
+          <input
+            type="text"
+            placeholder="Buscar rutas, montañas, amigos..."
+            className="w-full bg-transparent outline-none text-sm font-medium"
+          />
         </div>
 
         {/* User Profile con Menú Desplegable */}
-        <div className="user-profile" onClick={() => setMenuOpen(!menuOpen)} style={{ position: "relative", cursor: "pointer" }}>
-          <img src="https://swiftbyte.onrender.com/user_3.png" alt="User Profile" />
-          <span>Rider Pro</span>
+        <div className="relative cursor-pointer">
+          <div
+            className="flex items-center gap-3 p-2 bg-gray-100 rounded-full border border-gray-300 hover:bg-blue-100 transition"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <img
+              src="https://swiftbyte.onrender.com/user_3.png"
+              alt="User Profile"
+              className="w-10 h-10 rounded-full object-cover border-2 border-blue-400 shadow-sm"
+            />
+            <span className="font-semibold text-gray-800 text-sm">Rider Pro</span>
+          </div>
 
           {/* Menú de Logout */}
           {menuOpen && (
-            <div className="dropdown-menu" style={{
-              position: "absolute",
-              top: "100%",
-              right: 0,
-              background: "white",
-              boxShadow: "0px 4px 6px rgba(0,0,0,0.1)",
-              borderRadius: "5px",
-              padding: "10px",
-              zIndex: 100,
-            }}>
+            <div className="absolute top-full right-0 bg-white shadow-lg rounded-md py-2 w-40 border border-gray-200 z-50">
               <button
                 onClick={handleLogout}
-                style={{
-                  background: "red",
-                  color: "white",
-                  border: "none",
-                  padding: "8px 12px",
-                  cursor: "pointer",
-                  width: "100%",
-                }}
+                className="w-full text-left px-4 py-2 text-red-600 hover:bg-red-100 font-medium"
               >
                 Cerrar sesión
               </button>

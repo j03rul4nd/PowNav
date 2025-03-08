@@ -3,15 +3,15 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/authStore";
+import useDashboard from "@/hooks/useDashboard"; // Importar el hook
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import ThreeJSMap from "@/components/ThreeJSMap";
-import AddMarkerButton from "@/components/AddMarkerButton";
-import MapControls from "@/components/MapControls";
 
 export default function Dashboard() {
   const router = useRouter();
   const { user, checkUser, isLoading } = useAuthStore();
+ // const { setSidebarState } = useDashboard(); // Acceder a la función para manejar el estado del sidebar
 
   useEffect(() => {
     const verifyUser = async () => {
@@ -24,28 +24,24 @@ export default function Dashboard() {
     if (!isLoading && !user) {
       router.push("/"); // Redirigir solo después de verificar
     }
-  }, [isLoading, user, router]); // Ejecuta la redirección solo cuando cambie el estado de usuario o la carga
+  }, [isLoading, user, router]);
 
-  if (isLoading) return <p>Cargando sesión...</p>;
+  // // Asegurar que el Sidebar inicie colapsado
+  // useEffect(() => {
+  //   setSidebarState(true);
+  // }, [setSidebarState]);
+
+  if (isLoading) return <p className="text-center text-gray-500">Cargando sesión...</p>;
 
   return user ? (
-    <div className="app-container">
+    <div className="flex flex-col h-screen">
       <Header />
-      <div className="main-content">
+      <div className="flex flex-1 overflow-hidden">
         <Sidebar />
-        <div className="map-container">
+        <div className="flex-1 relative bg-gray-100 overflow-hidden">
           <ThreeJSMap />
-          <div className="absolute top-5 right-5">
-            <AddMarkerButton />
-          </div>
-          <MapControls
-            onZoomIn={() => console.log("Zoom In")}
-            onZoomOut={() => console.log("Zoom Out")}
-            onLocate={() => console.log("Ubicar usuario")}
-            onReport={() => console.log("Reportar evento")}
-          />
         </div>
       </div>
     </div>
-  ) : null; // Evita renderizar si el usuario aún no está verificado
+  ) : null;
 }
