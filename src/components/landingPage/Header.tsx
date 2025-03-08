@@ -52,10 +52,11 @@ export default function Header() {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
-            <div className="relative mr-2 w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden shadow-md transition-transform duration-300 group-hover:scale-110">
-              <div className="absolute w-5 h-5 bg-blue-500 rounded-sm transform transition-all duration-300 group-hover:rotate-45 group-hover:scale-110"></div>
-              <div className="absolute w-5 h-5 bg-blue-600 rounded-sm opacity-0 transform transition-all duration-300 group-hover:opacity-80 group-hover:-rotate-45 group-hover:translate-x-4 group-hover:translate-y-4"></div>
-            </div>
+            < img
+              src="/vercel.svg"
+              alt="PowNav Logo"
+              className="mr-2 w-10 h-10 rounded-lg shadow-md transition-transform duration-300 group-hover:scale-110"
+            />
             <h1 className="text-white text-2xl md:text-3xl font-bold tracking-tighter">
               Pow<span className="text-blue-300">Nav</span>
             </h1>
